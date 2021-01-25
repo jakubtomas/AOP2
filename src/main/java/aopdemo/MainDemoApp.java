@@ -5,6 +5,9 @@ import aopdemo.dao.MembershipDAO;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainDemoApp {
+	/*
+	* Created Jakub Tomas
+	* */
 
 
 	public static void main(String[] args) {
@@ -22,6 +25,13 @@ public class MainDemoApp {
 		Account myAccount = new Account();
 		theAccountDAO.addAccount(myAccount, true);
 		theAccountDAO.doWork();
+
+		theAccountDAO.setName("Apple");
+		theAccountDAO.setServiceCode("silverko");
+
+		String name = theAccountDAO.getName();
+		String code = theAccountDAO.getServiceCode();
+
 
 		theMembershipDAO.addAccount();
 		theMembershipDAO.goToSleep();
