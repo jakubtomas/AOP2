@@ -5,17 +5,29 @@ import org.aspectj.lang.annotation.Before;*/
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(2)
 public class MyDemoLoggingAspect {
 
 	//@Before("execution(public void updateAccount())")
 	//@Before("execution(public void add*())")
 	//@Before("execution(* add*(aopdemo.Account, ..))")
 	//@Before("execution(* add*(..))")
-	@Pointcut("execution(* aopdemo.dao.*.*(..))")
+
+
+	@Before("aopdemo.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
+	public void beforeAddAccountAdvice() {
+		System.out.println("\n=====>>> Executing @Before advice on method");
+	}
+
+
+
+
+	/*@Pointcut("execution(* aopdemo.dao.*.*(..))")
 	private void forDaoPackage() {}
 
 	@Pointcut("execution(* aopdemo.dao.*.get*(..))")
@@ -39,7 +51,7 @@ public class MyDemoLoggingAspect {
 	public void performApiAnalytics() {
 		System.out.println("\n=====>>> Performing API analytics");
 	}
-
+*/
 	/*@Before("execution(* aopdemo.dao.*.*(..))")
 	public void beforeAddAccountAdvice() {
 		
